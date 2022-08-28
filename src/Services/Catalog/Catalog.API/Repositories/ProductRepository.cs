@@ -27,7 +27,7 @@ namespace Catalog.API.Repositories
 
         public async Task<List<Products>> GetProductByName(string productName)
         {
-            FilterDefinition<Products> filter = Builders<Products>.Filter.ElemMatch(p => p.Category, productName);
+            FilterDefinition<Products> filter = Builders<Products>.Filter.Eq(p => p.Category, productName);
             return await _context
                             .Products
                             .Find(filter)
@@ -51,9 +51,9 @@ namespace Catalog.API.Repositories
 
         }
 
-        public async Task<List<Products>> GetProdyctByCatogory(string catogoryName)
+        public async Task<List<Products>> GetProdyctByCatogory(string catogory)
         {
-            FilterDefinition<Products> filter = Builders<Products>.Filter.ElemMatch(p => p.Category, catogoryName);
+            FilterDefinition<Products> filter = Builders<Products>.Filter.Eq(p => p.Category, catogory);
             return await _context
                             .Products
                             .Find(filter)

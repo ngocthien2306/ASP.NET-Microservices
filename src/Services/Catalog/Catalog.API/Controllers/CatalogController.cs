@@ -41,8 +41,8 @@ namespace Catalog.API.Controllers
 
         [Route("[action]/catogory", Name = "GetProductCatogory")]
         [HttpGet]
-        [ProducesResponseType(typeof(Products), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Products>> GetProductCatogoryName(string catogoryName)
+        [ProducesResponseType(typeof(List<Products>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Products>>> GetProductCatogory(string catogoryName)
         {
             var product = await _productRepository.GetProdyctByCatogory(catogoryName);
             return Ok(product);
