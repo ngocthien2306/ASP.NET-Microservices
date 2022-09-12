@@ -10,7 +10,8 @@ namespace Catalog.API.Data
             bool existProducts = mongoCollection.Find(p => true).Any();
             if(!existProducts)
             {
-                mongoCollection.InsertManyAsync(GetDefaultsProducts());
+                List<Products> products = GetDefaultsProducts();
+                mongoCollection.InsertManyAsync(products);
             }
         }
 
